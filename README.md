@@ -12,9 +12,10 @@ classin-api-sdk-php 是为了让PHP开发者能够在自己的代码里更快捷
 <?php
 use ClassInApi\ClassInApi;
 
-$config = array('SID'       => getenv('CLASSINAPI_SID'), //'您的 SID',
-                'SECRET'      => getenv('CLASSINAPI_SECRET'), //'您的 SECRET'
-                );
+$config = array(
+    'SID' => getenv('CLASSINAPI_SID'), //'您的 SID',
+    'SECRET' => getenv('CLASSINAPI_SECRET'), //'您的 SECRET'
+);
 
 $classinapi = ClassInApi::load($config);
 // 请求参数，请参考官方 API 文档上对应接口的说明
