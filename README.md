@@ -20,6 +20,7 @@ $config = array(
 $classinapi = ClassInApi::load($config);
 // 请求参数，请参考官方 API 文档上对应接口的说明
 // 请求前可以通过下面四个方法重新设置请求的 SID/SECRET参数
+// 请求方法对应api 文档 action值
 
 // 重新设置 SID
 $sid = '您的 SID';
@@ -29,7 +30,16 @@ $classinapi->setConfigSid($sid);
 $secret = '您的 SECRET';
 $classinapi->setConfigSecret($secret);
 
-$res = $classinapi->getCourseList();
+// 重新设置 ServerHost
+$serverhost = '您的 ClassinApi ServerHost'; 
+$classinapi->setServerHost($serverhost);
+
+$data = [
+    'telephone'=>'',
+    'password'=>''
+];
+$res = $classinapi->register($data);
 var_dump($res);
+
 
 ```
