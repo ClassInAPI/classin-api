@@ -52,6 +52,7 @@ var_dump($res);
 ```
 <?php
 use ClassInApi\Module\Course as ClassInCourseApi;
+
 $config = array(
     'SID' => getenv('CLASSINAPI_SID'), //'您的 SID',
     'SECRET' => getenv('CLASSINAPI_SECRET'), //'您的 SECRET'
