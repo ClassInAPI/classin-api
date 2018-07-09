@@ -5,6 +5,7 @@
  * Date: 2018/7/2
  * Time: 15:00
  */
+
 namespace ClassInApi;
 
 class ClassInApi
@@ -15,6 +16,13 @@ class ClassInApi
      * @var string
      */
     protected $_serverHost = 'www.eeo.cn';
+
+    /**
+     * $_serverUri
+     * url路径
+     * @var string
+     */
+    protected $_serverUri = '';
 
     /**
      * Action url
@@ -66,19 +74,6 @@ class ClassInApi
         }
     }
 
-
-    /**
-     * Load classinapi
-     * @param array  $config  config
-     * @return
-     */
-    public static function load($config = array())
-    {
-        $classinapi = new ClassInApi($config);
-        return $classinapi;
-    }
-
-
     /**
      * Set configuration
      * @param $config
@@ -88,17 +83,17 @@ class ClassInApi
     {
         if (!is_array($config) || !count($config))
             return false;
-
         foreach ($config as $key => $val) {
             switch ($key) {
                 case 'SID':
                     $this->setConfigSid($val);
                     break;
-
                 case 'SECRET':
                     $this->setConfigSecret($val);
                     break;
-
+                case 'ServerHost':
+                    $this->setServerHost($val);
+                    break;
                 default:
                     ;
                     break;
@@ -146,7 +141,7 @@ class ClassInApi
      */
     public function setRequestUrl()
     {
-        $this->_actionUrl = 'https://' . $this->_serverHost . '/partner/api/course.api.php?action=' . $this->_action;
+        $this->_actionUrl = 'https://' . $this->_serverHost . $this->_serverUri . '?action=' . $this->_action;
         return $this;
     }
 
@@ -208,9 +203,9 @@ class ClassInApi
             $paramArray['safeKey'] = md5($this->_SECRET . $paramArray['timeStamp']);
         }
         //used to uploadFile API
-        if(isset($paramArray['Filedata'])&&
+        if (isset($paramArray['Filedata']) &&
             !empty($paramArray['Filedata'])
-        ){
+        ) {
             $paramArray['Filedata'] = fopen($paramArray['Filedata'], 'r');
         }
         return $this->_sendRequest($paramArray);
@@ -225,7 +220,7 @@ class ClassInApi
     {
         $client = new \GuzzleHttp\Client();
         $multipart = [];
-        foreach ($paramArray as $item => $value){
+        foreach ($paramArray as $item => $value) {
             $multipart[] = [
                 'name' => $item,
                 'contents' => $value,
@@ -241,7 +236,7 @@ class ClassInApi
         $guzzlehttp = $client->request('POST', $this->_actionUrl, $option);
         $response = $guzzlehttp->getBody();
         $this->_rawResponse = $response;
-        $response = json_decode($response,JSON_UNESCAPED_UNICODE);
+        $response = json_decode($response, JSON_UNESCAPED_UNICODE);
         return $response;
     }
 
