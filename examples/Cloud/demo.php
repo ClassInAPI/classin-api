@@ -11,8 +11,8 @@ require '../../vendor/autoload.php';
 use ClassInApi\Module\Cloud as ClassInCloudApi;
 
 $config = array(
-    'SID' => "2516840", // getenv('CLASSINAPI_SID'), //'您的 SID',
-    'SECRET' => "E7BdIoJF", // getenv('CLASSINAPI_SECRET'), //'您的 SECRET',
+    'SID' => "", // getenv('CLASSINAPI_SID'), //'您的 SID',
+    'SECRET' => "", // getenv('CLASSINAPI_SECRET'), //'您的 SECRET',
 );
 
 
