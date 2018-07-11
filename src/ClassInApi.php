@@ -85,13 +85,13 @@ class ClassInApi
             return false;
         foreach ($config as $key => $val) {
             switch ($key) {
-                case 'SID':
+                case 'sid':
                     $this->setConfigSid($val);
                     break;
-                case 'SECRET':
+                case 'secret':
                     $this->setConfigSecret($val);
                     break;
-                case 'ServerHost':
+                case 'server_host':
                     $this->setServerHost($val);
                     break;
                 default:
@@ -238,6 +238,22 @@ class ClassInApi
         $this->_rawResponse = $response;
         $response = json_decode($response, JSON_UNESCAPED_UNICODE);
         return $response;
+    }
+
+    /**
+     * 获取api接口签名
+     * @return array $sign
+     */
+    public function getSignature()
+    {
+        $timeStamp = time();
+        $safeKey = md5($this->_SECRET . $timeStamp);
+        return [
+            'SID' => $this->_SID,
+            'safeKey' => $safeKey,
+            'timeStamp' => $timeStamp,
+            'ServerHost' => $this->_serverHost
+        ];
     }
 
 }
