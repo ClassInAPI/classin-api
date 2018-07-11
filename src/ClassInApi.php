@@ -252,7 +252,7 @@ class ClassInApi
             'SID' => $this->_SID,
             'safeKey' => $safeKey,
             'timeStamp' => $timeStamp,
-            'ServerHost' => $this->_serverHost
+            'ServerHost' => 'https://'.$this->_serverHost
         ];
     }
 
