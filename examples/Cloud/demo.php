@@ -11,8 +11,8 @@ require '../../vendor/autoload.php';
 use ClassInApi\Module\Cloud as ClassInCloudApi;
 
 $config = array(
-    'SID' => "", // getenv('CLASSINAPI_SID'), //'您的 SID',
-    'SECRET' => "", // getenv('CLASSINAPI_SECRET'), //'您的 SECRET',
+    'sid' => "", // getenv('CLASSINAPI_SID'), //'您的 SID',
+    'secret' => "", // getenv('CLASSINAPI_SECRET'), //'您的 SECRET',
 );
 
 
@@ -30,8 +30,8 @@ $secret = '您的 SECRET';
 $classincloudapi->setConfigSecret($secret);
 
 // 重新设置 ServerHost
-$serverhost = '您的 ClassinApi ServerHost';
-$classincloudapi->setServerHost($serverhost);
+$server_host = '您的 ClassinApi ServerHost';
+$classincloudapi->setServerHost($server_host);
 
 $res = $classincloudapi->getCloudList([
     'folderId' => 0

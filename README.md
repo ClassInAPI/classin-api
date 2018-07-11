@@ -17,8 +17,8 @@ classin-api-sdk-php 是为了让PHP开发者能够在自己的代码里更快捷
 use ClassInApi\Module\Cloud as ClassInCloudApi;
 
 $config = array(
-    'SID' => getenv('CLASSINAPI_SID'), //'您的 SID',
-    'SECRET' => getenv('CLASSINAPI_SECRET'), //'您的 SECRET'
+    'sid' => getenv('CLASSINAPI_SID'), //'您的 SID',
+    'secret' => getenv('CLASSINAPI_SECRET'), //'您的 SECRET'
 );
 
 
@@ -36,8 +36,8 @@ $secret = '您的 SECRET';
 $classincloudapi->setConfigSecret($secret);
 
 // 重新设置 ServerHost
-$serverhost = '您的 ClassinApi ServerHost';
-$classincloudapi->setServerHost($serverhost);
+$server_host = '您的 ClassinApi ServerHost';
+$classincloudapi->setServerHost($server_host);
 
 $res = $classincloudapi->getCloudList([
     'folderId' => 0
@@ -54,8 +54,8 @@ var_dump($res);
 use ClassInApi\Module\Course as ClassInCourseApi;
 
 $config = array(
-    'SID' => getenv('CLASSINAPI_SID'), //'您的 SID',
-    'SECRET' => getenv('CLASSINAPI_SECRET'), //'您的 SECRET'
+    'sid' => getenv('CLASSINAPI_SID'), //'您的 SID',
+    'secret' => getenv('CLASSINAPI_SECRET'), //'您的 SECRET'
 );
 
 $classincourseapi = new ClassInCourseApi($config);
@@ -72,8 +72,8 @@ $secret = '您的 SECRET';
 $classincourseapi->setConfigSecret($secret);
 
 // 重新设置 ServerHost
-$serverhost = '您的 ClassinApi ServerHost';
-$classincourseapi->setServerHost($serverhost);
+$server_host = '您的 ClassinApi ServerHost';
+$classincourseapi->setServerHost($server_host);
 
 $res = $classincourseapi->getCourseList();
 
