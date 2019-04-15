@@ -15,7 +15,7 @@ class ClassInApi
      * API serverhost
      * @var string
      */
-    protected $_serverHost = 'www.eeo.cn';
+    protected $_serverHost = 'https://www.eeo.cn';
 
     /**
      * $_serverUri
@@ -141,7 +141,7 @@ class ClassInApi
      */
     public function setRequestUrl()
     {
-        $this->_actionUrl = 'https://' . $this->_serverHost . $this->_serverUri . '?action=' . $this->_action;
+        $this->_actionUrl = $this->_serverHost . $this->_serverUri . '?action=' . $this->_action;
         return $this;
     }
 
@@ -252,7 +252,7 @@ class ClassInApi
             'SID' => $this->_SID,
             'safeKey' => $safeKey,
             'timeStamp' => $timeStamp,
-            'ServerHost' => 'https://'.$this->_serverHost
+            'ServerHost' => $this->_serverHost
         ];
     }
 
